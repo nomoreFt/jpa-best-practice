@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    hikari.auto-commit: false
+  h2.console.enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        highlight_sql: true
+        use_sql_comments: false
+        show_sql: true
+        connection.provider_disables_autocommit: true
+        order_inserts: true
+        order_updates: true
+        jdbc:
+          batch_size: 30
+        default_batch_fetch_size: 5
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+      data-locations: classpath*:data_*.sql
+
+logging:
+  level:
+    org.hibernate.orm.jdbc.bind: TRACE
+    #logging.level.ROOT=INFO
+    org.springframework.orm.jpa: DEBUG
+    org.springframework.transaction: DEBUG
+    org.hibernate.engine.transaction.internal.TransactionImpl: DEBUG
+    # Enable logging for HikariCP to verify that it is used
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    com.zaxxer.hikari: TRACE
+
+
+
+
+
+
