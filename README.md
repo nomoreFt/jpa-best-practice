@@ -19,7 +19,7 @@
 
 
 ---
-## 정보 MarkDown
+## 정보 MarkDown src/main/resources
 
 * DbConnection 절약
 * Transactional이 무시되는 경우
