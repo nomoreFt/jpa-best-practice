@@ -73,17 +73,11 @@ public class Book implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (this == obj) {
-            return true;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        Book other = (Book) obj;
-        return id != null && id.equals(other.id);
+        if (obj == null) return false;
+        if (this == obj) return true;
+        if (!(obj instanceof Book other)) return false;
+
+        return id != null && id.equals(other.getId());
     }
 
     @Override

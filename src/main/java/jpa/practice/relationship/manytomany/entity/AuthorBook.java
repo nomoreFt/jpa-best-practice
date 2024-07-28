@@ -1,15 +1,14 @@
 package jpa.practice.relationship.manytomany.entity;
 
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
+import jakarta.persistence.*;
+import org.hibernate.annotations.BatchSize;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import static jakarta.persistence.FetchType.EAGER;
 import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
@@ -22,10 +21,12 @@ public class AuthorBook implements Serializable {
 
     @MapsId("authorId")
     @ManyToOne(fetch = LAZY)
+    @BatchSize(size = 3)
     private Author author;
 
     @MapsId("bookId")
     @ManyToOne(fetch = LAZY)
+    @BatchSize(size = 10)
     private Book book;
 
     private Date publishedOn = new Date();
@@ -72,26 +73,22 @@ public class AuthorBook implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (this == obj) {
-            return true;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (obj == null) return false;
+        if (this == obj) return true;
+        if(!(obj instanceof AuthorBook other)) return false;
 
-        final AuthorBook other = (AuthorBook) obj;
-        if (!Objects.equals(this.author, other.author)) {
-            return false;
-        }
-
-        if (!Objects.equals(this.book, other.book)) {
-            return false;
-        }
+        if (!Objects.equals(this.author, other.author)) return false;
+        if (!Objects.equals(this.book, other.book)) return false;
 
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.author);
+        hash = 31 * hash + Objects.hashCode(this.book);
+        return hash;
     }
 
     @Override

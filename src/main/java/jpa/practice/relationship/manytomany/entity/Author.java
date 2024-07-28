@@ -2,12 +2,17 @@ package jpa.practice.relationship.manytomany.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
-public class Author {
+public class Author implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
@@ -66,17 +71,11 @@ public class Author {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (this == obj) {
-            return true;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (obj == null) return false;
+        if (this == obj) return true;
+        if(!(obj instanceof Author other)) return false;
 
-        return id != null && id.equals(((Author) obj).id);
+        return id != null && id.equals(other.getId());
     }
 
     @Override

@@ -56,24 +56,12 @@ public class AuthorBookId implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (this == obj) {
-            return true;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (obj == null) return false;
+        if (this == obj) return true;
+        if (!(obj instanceof AuthorBookId other)) return false;
 
-        final AuthorBookId other = (AuthorBookId) obj;
-        if (!Objects.equals(this.authorId, other.authorId)) {
-            return false;
-        }
-
-        if (!Objects.equals(this.bookId, other.bookId)) {
-            return false;
-        }
+        if (!Objects.equals(this.authorId, other.authorId)) return false;
+        if (!Objects.equals(this.bookId, other.bookId)) return false;
 
         return true;
     }

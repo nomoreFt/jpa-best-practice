@@ -23,9 +23,11 @@ public class MainApplication {
     @Bean
     public ApplicationRunner init() {
         return args -> {
+            bookstoreService.init();
+            bookstoreService.fetchAllAuthorsAndBooks();
             //bookstoreService.fetchAuthorsAndBooksDTOV1();
-            //bookstoreService.fetchAuthorsAndBooksDTOV2();
-            bookstoreService.fetchAuthorsAndBooksTupleV3();
+            //bookstoreService.fetchAuthorsAndBooksProjectionV2();
+            //bookstoreService.fetchAuthorsAndBooksTupleV3();
         };
     }
 }
