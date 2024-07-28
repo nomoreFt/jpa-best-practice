@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -23,7 +24,7 @@ public class Author implements Serializable {
     @OneToMany(mappedBy = "author"
             , cascade = {CascadeType.PERSIST, CascadeType.MERGE}
             , fetch = FetchType.LAZY)
-    private List<AuthorBook> books;
+    private List<AuthorBook> books = new ArrayList<>();
 
     protected Author() {}
 
