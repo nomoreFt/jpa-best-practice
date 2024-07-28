@@ -21,12 +21,10 @@ public class AuthorBook implements Serializable {
 
     @MapsId("authorId")
     @ManyToOne(fetch = LAZY)
-    @BatchSize(size = 3)
     private Author author;
 
     @MapsId("bookId")
     @ManyToOne(fetch = LAZY)
-    @BatchSize(size = 10)
     private Book book;
 
     private Date publishedOn = new Date();

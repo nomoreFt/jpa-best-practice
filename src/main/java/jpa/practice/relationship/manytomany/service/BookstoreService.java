@@ -11,6 +11,7 @@ import jpa.practice.relationship.manytomany.entity.Author;
 import jpa.practice.relationship.manytomany.entity.AuthorBook;
 import jpa.practice.relationship.manytomany.entity.Book;
 import jpa.practice.relationship.manytomany.repository.AuthorBookRepository;
+import jpa.practice.relationship.manytomany.repository.AuthorBookTransformerImpl;
 import jpa.practice.relationship.manytomany.repository.AuthorRepository;
 import jpa.practice.relationship.manytomany.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -25,9 +26,9 @@ public class BookstoreService {
     private final AuthorBookRepository authorBookRepository;
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
-    private final AuthorBookTransformer authorBookTransformer;
+    private final AuthorBookTransformerImpl authorBookTransformer;
 
-    public BookstoreService(AuthorBookRepository authorBookRepository, AuthorRepository authorRepository, BookRepository bookRepository, AuthorBookTransformer authorBookTransformer) {
+    public BookstoreService(AuthorBookRepository authorBookRepository, AuthorRepository authorRepository, BookRepository bookRepository, AuthorBookTransformerImpl authorBookTransformer) {
         this.authorBookRepository = authorBookRepository;
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
