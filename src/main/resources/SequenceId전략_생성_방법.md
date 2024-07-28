@@ -1,5 +1,9 @@
-    @Id
-/*    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hilo")
+~~~java
+
+@Id
+
+/**
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hilo")
 @GenericGenerator(name = "hilo",
 type = SequenceStyleGenerator.class,
 parameters = {
@@ -7,8 +11,8 @@ parameters = {
 @org.hibernate.annotations.Parameter(name = "initial_value", value = "1"),
 @org.hibernate.annotations.Parameter(name = "increment_size", value = "100"),
 @org.hibernate.annotations.Parameter(name = "optimizer", value = "hilo")
-})*/
-
+})
+**/
 
 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_seq")
 @jakarta.persistence.SequenceGenerator(
@@ -21,6 +25,6 @@ allocationSize = 20
 
 private Long id;
 
+~~~
 
 기본적으로 두 상황이 동일하게 적용된다.
-Hibernate 6.2부터 
