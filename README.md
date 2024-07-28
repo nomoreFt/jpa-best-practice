@@ -29,6 +29,6 @@
 
 * [DbConnection 절약](src/main/resources/DBConnection절약.md)
 * [Transactional이 무시되는 경우](src/main/resources/IgnoreTransactionl상황.md)
-* [Transactional 로깅 설정](Transaction_로깅_설정.md)
-* [Transactional readOnly와 readWrite + DTO 상태 분석](TransactionalReadOnly토글테스트.md)
-* [Transactional Timeout, rollback 체크 ](TransactionTimeout및Rollback체크.md)
+* [Transactional 로깅 설정](src/main/resources/Transaction_로깅_설정.md)
+* [Transactional readOnly와 readWrite + DTO 상태 분석](src/main/resources/TransactionalReadOnly토글테스트.md)
+* [Transactional Timeout, rollback 체크 ](src/main/resources/TransactionTimeout및Rollback체크.md)
