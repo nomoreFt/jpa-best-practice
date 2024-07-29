@@ -10,6 +10,8 @@
 - Hibernate 6.x 이상
 - Gradle
 
+---
+
 ## ManyToMany
 * junctionTable을 엔티티로 격상하여 복합키 사용. MapsId로 컬럼 단순화
 * DTO, Projection, Tuple 로 가져오며 구조 유지하는 방법
