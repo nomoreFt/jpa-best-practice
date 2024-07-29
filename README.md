@@ -1,3 +1,15 @@
+# JPA Practice Examples
+
+* 이 프로젝트는 JPA의 다양한 매핑과 패턴을 실습하기 위한 예제 프로젝트입니다.<br>
+* 모든 예제는 패키지로 구성되어 있으며, 각 패키지 내부에 MainApplication 클래스를 통해 실행할 수 있습니다.<br>
+* db 의존을 제거하기 위해 h2 mem과 직접 init Data를 넣어주어 작동시킵니다.<br>
+* Entity 내부에 주석을 달거나 작동을 원하는 Service의 메서드를 살펴보면 `실행 쿼리` 혹은 `추가된 설명 주석`을 보실 수 있습니다.
+
+## 실행 환경
+- Java 17 이상
+- Hibernate 6.x 이상
+- Gradle
+
 ## ManyToMany
 * junctionTable을 엔티티로 격상하여 복합키 사용. MapsId로 컬럼 단순화
 * DTO, Projection, Tuple 로 가져오며 구조 유지하는 방법
