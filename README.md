@@ -29,12 +29,21 @@
 ## OneToOne
 * 단방향 MapsId로 선언하여 테이블 컬럼 단순화
 * [OneToOne](src/main/java/jpa/practice/relationship/onetoone)
-
-  
+ 
 ## ElementalCollection
 * 삽입, 삭제시 전체 DELETE, N개만큼 INSERT문이 발생한다.
 * 따라서 잘 안변하는 값 객체들을 넣을 생각을 하고 그게 아니라면 성능을 위해 엔티티 연관관계로 풀어갈 생각하자.
 * [ElementalCollection](src/main/java/jpa/practice/relationship/elementalcollection) 
+
+---
+
+## Transient 사용
+* 비영속 값 혹은 필드를 선언하여 사용하는 방법
+* v1 : 메서드에 @Transient 선언
+* v2 : 필드에 @Transient 선언
+* v3 : @Formula를 사용하여 비영속 필드에 DB에서 계산된 값을 가져오는 방법
+* [Transient](src/main/java/jpa/practice/relationship/useful_transient)
+
 
 
 
