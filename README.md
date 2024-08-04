@@ -45,6 +45,17 @@
 * [Transient](src/main/java/jpa/practice/relationship/useful_transient)
 
 
+## JPQL 기본 지원 function
+* JPQL에서 지원하는 기본 함수들을 사용하는 방법
+* 기본 함수 : 
+  * ABS, CASE, COALESCE, CONCAT, LENGTH, LOCATE, LOWER, UPPER, SQRT, SUBSTRING, TRIM
+* 특수 함수 :
+  * INDEX, KEY, SIZE, IS EMPTY, MEMBER OF
+  * TREAT, TYPE은 너무 특수한 경우라서 따로 예제를 만들지 않았다.
+* 날짜 컬럼 :
+  * LocalDate, LocalDateTime, LocalTime, Instant
+* [JPQL Function](src/main/java/jpa/practice/relationship/jpql_basic_function)
+
 
 
 ---
