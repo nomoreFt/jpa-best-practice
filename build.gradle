@@ -26,6 +26,10 @@ dependencies {
 
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //ttddyy
+    implementation 'net.ttddyy:datasource-proxy:1.8.1'
+    implementation 'com.vladmihalcea:db-util:1.0.7'
 }
 
 tasks.named('test') {
