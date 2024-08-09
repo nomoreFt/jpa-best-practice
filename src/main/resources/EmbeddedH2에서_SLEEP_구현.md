@@ -58,3 +58,16 @@ Type:Prepared, Batch:False, QuerySize:1, BatchSize:0
 Query:["SELECT * FROM  author WHERE sleep(5000)"]
 Params:[()]
 ~~~
+
+
+---
+
+
+# Test시
+
+~~~java
+@BeforeEach
+void before() {
+    functionProvider.addFunction();
+}
+~~~

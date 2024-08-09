@@ -59,10 +59,18 @@
 
 
 ---
-## 정보 MarkDown src/main/resources
+## 정보 MarkDown 
 
+### Config
 * [DbConnection 절약](src/main/resources/DBConnection절약.md)
-* [Transactional이 무시되는 경우](src/main/resources/IgnoreTransactionl상황.md)
 * [Transactional 로깅 설정](src/main/resources/Transaction_로깅_설정.md)
+* [Embedded H2에서 SLEEP 구현](src/main/resources/EmbeddedH2에서_SLEEP_구현.md)
+
+### 기능 및 성능
+* [Transactional이 무시되는 경우](src/main/resources/IgnoreTransactionl상황.md)
 * [Transactional readOnly와 readWrite + DTO 상태 분석](src/main/resources/TransactionalReadOnly토글테스트.md)
 * [Transactional Timeout, rollback 체크 ](src/main/resources/TransactionTimeout및Rollback체크.md)
+
+<br>
+
+
