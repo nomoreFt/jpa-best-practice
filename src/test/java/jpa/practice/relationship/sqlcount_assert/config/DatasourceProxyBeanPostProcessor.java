@@ -1,10 +1,13 @@
 package jpa.practice.relationship.sqlcount_assert.config;
 
+import net.ttddyy.dsproxy.ExecutionInfo;
+import net.ttddyy.dsproxy.QueryInfo;
+import net.ttddyy.dsproxy.listener.logging.QueryLogEntryCreator;
 import net.ttddyy.dsproxy.listener.logging.SLF4JLogLevel;
+import net.ttddyy.dsproxy.listener.logging.SLF4JQueryLoggingListener;
 import net.ttddyy.dsproxy.support.ProxyDataSourceBuilder;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +15,8 @@ import org.springframework.util.ReflectionUtils;
 
 import javax.sql.DataSource;
 import java.lang.reflect.Method;
+import java.sql.Statement;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -50,24 +55,14 @@ public class DatasourceProxyBeanPostProcessor implements BeanPostProcessor {
             this.dataSource = ProxyDataSourceBuilder.create(dataSource)
                     .name("DATA_SOURCE_PROXY")
                     .logQueryBySlf4j(SLF4JLogLevel.INFO)
-                    .multiline()
-                    .countQuery()
-                    .beforeMethod(execInfo -> {
-                        logger.info("Before method: " + execInfo.getMethod().getName());
-                    })
-                    .afterMethod(execInfo -> {
-                        logger.info("After method: " + execInfo.getMethod().getName());
-                    })
                     .beforeQuery((execInfo, queryInfoList) -> {
-                        queryInfoList.forEach(queryInfo -> {
-                            logger.info("beforeQuery Query executed: " + queryInfo.getQuery());
-                        });
+                        logger.info("\u001B[32m=======Start Query=======\u001B[0m");
                     })
                     .afterQuery((execInfo, queryInfoList) -> {
-                        queryInfoList.forEach(queryInfo -> {
-                            logger.info("afterQuery Query executed: " + queryInfo.getQuery());
-                        });
+                        logger.info("\u001B[32m=======End Query=======\u001B[0m");
                     })
+                    .multiline()
+                    .countQuery()
                     .build();
         }
 

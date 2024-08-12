@@ -11,6 +11,7 @@ spring:
       ddl-auto: create
     properties:
       hibernate:
+        session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 1
         format_sql: true
         highlight_sql: true
         use_sql_comments: false

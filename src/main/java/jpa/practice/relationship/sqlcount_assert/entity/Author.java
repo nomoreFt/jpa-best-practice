@@ -56,4 +56,8 @@ public class Author {
                 ", name='" + name + '\'' +
                 '}';
     }
+
+    public void setAge(int i) {
+        this.age = i;
+    }
 }

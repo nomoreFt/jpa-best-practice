@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 100
+logging:
+  level:
+    org.hibernate.orm.jdbc.bind: TRACE
+    #logging.level.ROOT=INFO
+    org.springframework.orm.jpa: DEBUG
+    org.springframework.transaction: DEBUG
+    org.hibernate.engine.transaction.internal.TransactionImpl: DEBUG
+    # Enable logging for HikariCP to verify that it is used
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    com.zaxxer.hikari: TRACE
+
+
+
+
+
+
