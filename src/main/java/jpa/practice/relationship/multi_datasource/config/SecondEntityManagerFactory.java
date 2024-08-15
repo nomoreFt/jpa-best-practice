@@ -1,0 +1,146 @@
+package jpa.practice.relationship.multi_datasource.config;
+
+import jakarta.persistence.EntityManagerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
+
+@Configuration
+@EnableJpaRepositories(
+        basePackages = "jpa.practice.relationship.multi_datasource.repository.secondary",
+        entityManagerFactoryRef = "secondaryEntityManagerFactory",
+        transactionManagerRef = "secondaryTransactionManager"
+)
+@EnableTransactionManagement
+public class SecondEntityManagerFactory {
+
+    @Bean
+    public LocalContainerEntityManagerFactoryBean secondaryEntityManagerFactory(
+            EntityManagerFactoryBuilder builder, @Qualifier("dataSourceSecondaryDb") DataSource dataSource
+    ) {
+        return builder
+                .dataSource(dataSource)
+                .packages(packageToScan())
+                .persistenceUnit("secondary")
+                .properties(hibernateProperties())
+                .build();
+    }
+
+    @Bean
+    public PlatformTransactionManager secondaryTransactionManager(
+            @Qualifier("secondaryEntityManagerFactory") EntityManagerFactory secondaryEntityManagerFactory
+    ) {
+        return new JpaTransactionManager(secondaryEntityManagerFactory);
+    }
+
+
+    /**
+     * entities to scan
+     */
+    protected String[] packageToScan() {
+        return new String[] {
+                "jpa.practice.relationship.multi_datasource.entity.secondary"
+        };
+    }
+
+    /**
+     * hibernate properties
+     */
+    protected Map<String,String> hibernateProperties() {
+        return new HashMap<>() {
+            {
+                put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+                put("hibernate.hbm2ddl.auto", "create");
+            }
+        };
+    }
+
+}
+
+/**
+ * Building JPA container EntityManagerFactory for persistence unit 'secondary'
+ * HHH000204: Processing PersistenceUnitInfo [name: secondary]
+ * HHH000026: Second-level cache disabled
+ * HikariPool-1 - After adding stats (total=9, active=0, idle=9, waiting=0)
+ * HikariPool-1 - Added connection conn9: url=jdbc:h2:mem:5557f4e8-42d3-46f0-ba2c-d68c5df1dcbe user=SA
+ * No LoadTimeWeaver setup: ignoring JPA class transformer
+ *
+ * HikariPool-2 - configuration:
+ * allowPoolSuspension.............false
+ * autoCommit......................true
+ * catalog.........................none
+ * connectionInitSql...............none
+ * connectionTestQuery.............none
+ * connectionTimeout...............30000
+ * dataSource......................none
+ * dataSourceClassName.............none
+ * dataSourceJNDI..................none
+ * dataSourceProperties............{password=<masked>}
+ * driverClassName................."org.h2.Driver"
+ * exceptionOverrideClassName......none
+ * healthCheckProperties...........{}
+ * healthCheckRegistry.............none
+ * idleTimeout.....................600000
+ * initializationFailTimeout.......1
+ * isolateInternalQueries..........false
+ * jdbcUrl.........................jdbc:h2:mem:836efcea-05fd-4d9a-9372-cb85c4f32d28;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+ * keepaliveTime...................0
+ * leakDetectionThreshold..........0
+ * maxLifetime.....................1800000
+ * maximumPoolSize.................10
+ * metricRegistry..................none
+ * metricsTrackerFactory...........none
+ * minimumIdle.....................10
+ * password........................<masked>
+ * poolName........................"HikariPool-2"
+ * readOnly........................false
+ * registerMbeans..................false
+ * scheduledExecutor...............none
+ * schema..........................none
+ * threadFactory...................internal
+ * transactionIsolation............default
+ * username........................"sa"
+ * validationTimeout...............5000
+ * HikariPool-2 - Starting...
+ * HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:836efcea-05fd-4d9a-9372-cb85c4f32d28 user=SA
+ * HikariPool-2 - Start completed.
+ *
+ * HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+ * HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+ *
+ * [Hibernate]
+ *     drop table if exists Book cascade
+ * [Hibernate]
+ *     create table Book (
+ *         id bigint generated by default as identity,
+ *         authors varchar(255),
+ *         isbn varchar(255),
+ *         title varchar(255),
+ *         primary key (id)
+ *     )
+ * Initialized JPA EntityManagerFactory for persistence unit 'secondary'
+ * HikariPool-1 - After adding stats (total=10, active=0, idle=10, waiting=0)
+ * Creating new EntityManager for shared EntityManager invocation
+ * Creating new EntityManager for shared EntityManager invocation
+ * Creating new EntityManager for shared EntityManager invocation
+ * HikariPool-2 - Pool stats (total=1, active=0, idle=1, waiting=0)
+ * HikariPool-2 - Added connection conn11: url=jdbc:h2:mem:836efcea-05fd-4d9a-9372-cb85c4f32d28 user=SA
+ * Creating new EntityManager for shared EntityManager invocation
+ * Creating new EntityManager for shared EntityManager invocation
+ * HikariPool-2 - After adding stats (total=2, active=0, idle=2, waiting=0)
+ * HikariPool-2 - Added connection conn12: url=jdbc:h2:mem:836efcea-05fd-4d9a-9372-cb85c4f32d28 user=SA
+ * HikariPool-2 - After adding stats (total=3, active=0, idle=3, waiting=0)
+ * HikariPool-2 - Added connection conn13: url=jdbc:h2:mem:836efcea-05fd-4d9a-9372-cb85c4f32d28 user=SA
+ * HikariPool-2 - After adding stats (total=4, active=0, idle=4, waiting=0)
+ * HikariPool-2 - Added connection conn14: url=jdbc:h2:mem:836efcea-05fd-4d9a-9372-cb85c4f32d28 user=SA
+ */
