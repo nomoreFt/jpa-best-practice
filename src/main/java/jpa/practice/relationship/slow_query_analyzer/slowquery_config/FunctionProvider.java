@@ -1,4 +1,4 @@
-package jpa.practice.relationship.sqlcount_assert.config;
+package jpa.practice.relationship.slow_query_analyzer.slowquery_config;
 
 import jakarta.persistence.EntityManager;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class FunctionProvider {
 
     @Transactional
     public void addFunction() {
-        entityManager.createNativeQuery("CREATE ALIAS SLEEP FOR \"jpa.practice.relationship.sqlcount_assert.config.CustomFunctions.sleep\"")
+        entityManager.createNativeQuery("CREATE ALIAS SLEEP FOR \"jpa.practice.relationship.slow_query_analyzer.slowquery_config.CustomFunctions.sleep\"")
                 .executeUpdate();
     }
 }

@@ -1,4 +1,4 @@
-package jpa.practice.relationship.sqlcount_assert.config;
+package jpa.practice.relationship.slow_query_analyzer.slowquery_config;
 
 public class CustomFunctions {
     public static void sleep(int milliseconds) {
