@@ -136,9 +136,6 @@ WARN Name:DATA_SOURCE_PROXY, Connection:6, Time:5006, Success:True, Type:Prepare
 
 
 
-
-
-
 # hibernate 프로퍼티 설정
 
 ## yml에 설정을 추가한다.
@@ -153,4 +150,46 @@ spring.jpa.properties.hibernate.session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 5
 ~~~sql
 2024-08-15T12:51:38.658+09:00  INFO 48111 --- [           main] org.hibernate.SQL_SLOW                   : Slow query took 5010 milliseconds [SELECT * FROM  author WHERE sleep(5000)]
 Slow query took 5010 milliseconds [SELECT * FROM  author WHERE sleep(5000)]
+~~~
+
+
+# Aspect를 이용한 방법
+
+~~~java
+@Aspect
+@Component
+public class RepositoryProfiler {
+
+    Logger logger = Logger.getLogger(RepositoryProfiler.class.getName());
+
+    @Pointcut("execution(* jpa.practice.relationship.slow_query_analyzer.repository.*.*(..))")
+    public void interceptRepositoryMethods() {
+    }
+
+    @Around("interceptRepositoryMethods()")
+    public Object profile(ProceedingJoinPoint joinPoint){
+        long start = System.currentTimeMillis();
+        Object result = null;
+        try {
+            result = joinPoint.proceed();
+        } catch (Throwable e) {
+            logger.severe(e.getMessage());
+            throw new RuntimeException(e);
+        }
+        long elapsedTime = System.currentTimeMillis() - start;
+
+        if (elapsedTime > 30) {
+            logger.info("Method " + joinPoint.getSignature() + " executed in " + elapsedTime + "ms");
+        }
+        
+        return result;
+    }
+}
+~~~
+
+
+## 예시 로그
+
+~~~sql
+INFO : Method Author jpa.practice.relationship.slow_query_analyzer.repository.AuthorRepository.largeQuery() executed in 5051ms
 ~~~
