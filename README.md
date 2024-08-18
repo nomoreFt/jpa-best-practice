@@ -106,6 +106,7 @@
 * [DbConnection 절약](src/main/resources/DBConnection절약.md)
 * [Transactional 로깅 설정](src/main/resources/Transaction_로깅_설정.md)
 * [Embedded H2에서 SLEEP 구현](src/main/resources/EmbeddedH2에서_SLEEP_구현.md)
+* [1차 캐시 로깅 설정](src/main/java/jpa/practice/relationship/logging_persistence_context) 
 
 ### 기능 및 성능
 * [Transactional이 무시되는 경우](src/main/resources/IgnoreTransactionl상황.md)
