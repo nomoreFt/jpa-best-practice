@@ -57,6 +57,14 @@
 * [JPQL Function](src/main/java/jpa/practice/relationship/jpql_basic_function)
 
 
+## 다중 DataSource
+* 다중 DataSource를 사용하여 다중 DB에 접근하는 방법
+  * Hikari 설정도 적용하는 Configuration
+* primary : h2 mem, secondary : postgresql 을 사용했다.
+* Entity Scan과 Repository Scan을 각기 DataSource에 맞게 분리하여 패키지 구성
+* Docker를 사용하여 postgresql을 실행.
+* [Multiple DataSource](src/main/java/jpa/practice/relationship/multi_datasource)
+
 ---
 
 # Test 

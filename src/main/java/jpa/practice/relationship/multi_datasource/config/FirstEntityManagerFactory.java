@@ -65,7 +65,7 @@ public class FirstEntityManagerFactory {
 
 
 /**
- * ===== 프라이머리로 생성
+ * ===== 프라이머리 H2로 생성
  *
  * j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'primary'
  * o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: primary]
