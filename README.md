@@ -105,7 +105,9 @@
 * [Transactional이 무시되는 경우](src/main/resources/IgnoreTransactionl상황.md)
 * [Transactional readOnly와 readWrite + DTO 상태 분석](src/main/resources/TransactionalReadOnly토글테스트.md)
 * [Transactional Timeout, rollback 체크 ](src/main/resources/TransactionTimeout및Rollback체크.md)
+
 <br>
+
 * [SLOW_QUERY_LOGGING SETTING](src/main/resources/SLOW_QUERY_LOGGING.md)
   * [예시 코드](src/main/java/jpa/practice/relationship/slow_query_analyzer)
 
