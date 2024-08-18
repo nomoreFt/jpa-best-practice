@@ -72,6 +72,19 @@
 * AbstractRoutingDataSource를 상속받아 DataSource를 선택하는 방법을 추가적으로 구현하면 좋을 것 같다.
 * [Multiple DataSource](src/main/java/jpa/practice/relationship/multi_datasource)
 
+
+## 엔티티 변경 History 생성
+* Envers를 사용하여 엔티티 변경 이력을 생성하는 방법
+  * yml에 spring.jpa.properties.org.hibernate.envers.audit_strategy: org.hibernate.envers.strategy.ValidityAuditStrategy 추가
+  * implementation 'org.springframework.data:spring-data-envers' 추가
+* 지금은 실행시 HHH015007: Illegal argument on static metamodel field injection 에러가 난다.
+  * [HHH-17612](https://hibernate.atlassian.net/browse/HHH-17612) 에서 최신 버전에 대응중이다.
+* RevisionRepository를 스거나 AuditReader로 더 세부적인 변경 이력을 조회할 수 있다.
+* 변경자를 추가하기 위해 CustomRevisionEntity + Listener를 추가하여 사용할 수 있다.
+  * [참고](https://gengminy.tistory.com/60)
+* [Entity History](src/main/java/jpa/practice/relationship/hibernate_envers)
+  
+
 ---
 
 # Test 

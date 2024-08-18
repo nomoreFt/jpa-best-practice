@@ -32,6 +32,10 @@ dependencies {
     //ttddyy
     implementation 'net.ttddyy:datasource-proxy:1.8.1'
     implementation 'com.vladmihalcea:db-util:1.0.7'
+
+    //envers
+    implementation 'org.springframework.data:spring-data-envers'
+
 }
 
 tasks.named('test') {

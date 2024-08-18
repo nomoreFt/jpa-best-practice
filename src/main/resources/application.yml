@@ -10,6 +10,7 @@ spring:
     hibernate:
       ddl-auto: create
     properties:
+      org.hibernate.envers.audit_strategy: org.hibernate.envers.strategy.ValidityAuditStrategy #Envers ?? ???
       hibernate:
         session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 5000
         format_sql: true
@@ -74,4 +75,8 @@ secondary:
     maximum-pool-size: 8
     minimum-idle: 8
     connection-test-query: SELECT 1
+
+
+
+
 
