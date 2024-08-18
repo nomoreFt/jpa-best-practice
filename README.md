@@ -35,6 +35,12 @@
 * 따라서 잘 안변하는 값 객체들을 넣을 생각을 하고 그게 아니라면 성능을 위해 엔티티 연관관계로 풀어갈 생각하자.
 * [ElementalCollection](src/main/java/jpa/practice/relationship/elementalcollection) 
 
+## BaseEntity
+* 기본적인 설정을 추가한 BaseEntity를 상속받아 사용하는 방법
+  * Auditing : 생성일, 수정일, 생성자, 수정자
+  * Domain : ID, Equals, HashCode 
+* [BaseEntity](src/main/java/jpa/practice/relationship/base_entity)
+
 ---
 
 ## Transient 사용
