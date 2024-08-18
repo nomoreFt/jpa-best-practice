@@ -63,6 +63,7 @@
 * primary : h2 mem, secondary : postgresql 을 사용했다.
 * Entity Scan과 Repository Scan을 각기 DataSource에 맞게 분리하여 패키지 구성
 * Docker를 사용하여 postgresql을 실행.
+* AbstractRoutingDataSource를 상속받아 DataSource를 선택하는 방법을 추가적으로 구현하면 좋을 것 같다.
 * [Multiple DataSource](src/main/java/jpa/practice/relationship/multi_datasource)
 
 ---
