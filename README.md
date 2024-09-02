@@ -125,7 +125,9 @@
 * [Transactional이 무시되는 경우](src/main/resources/IgnoreTransactionl상황.md)
 * [Transactional readOnly와 readWrite + DTO 상태 분석](src/main/resources/TransactionalReadOnly토글테스트.md)
 * [Transactional Timeout, rollback 체크 ](src/main/resources/TransactionTimeout및Rollback체크.md)
-
+#### Hibernate5
+* [Hibernate5에서 1:다 조회시 부모중복조회이슈 Distinct 최적화](src/main/resources/Hibernate5_Distinct최적화.md)
+ 
 <br>
 
 * [SLOW_QUERY_LOGGING SETTING](src/main/resources/SLOW_QUERY_LOGGING.md)
