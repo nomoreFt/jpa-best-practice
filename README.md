@@ -125,6 +125,11 @@
 * [Transactional이 무시되는 경우](src/main/resources/IgnoreTransactionl상황.md)
 * [Transactional readOnly와 readWrite + DTO 상태 분석](src/main/resources/TransactionalReadOnly토글테스트.md)
 * [Transactional Timeout, rollback 체크 ](src/main/resources/TransactionTimeout및Rollback체크.md)
+* [Query Plan Cache](src/main/java/jpa/practice/relationship/query_plan_cache)
+  * Hibernate Statistics를 사용하여 Query Plan Cache를 확인하는 방법
+  * In절의 Padding설정에 따라 Query Plan Cache의 변화
+    * 각 In 파라미터의 값, 개수별로 따로 실행계획이 저장되는 줄 알았는데 파라미터와 상관이 없나보다?
+    * H2 내장 db라 그런지 체크가 필요하다.
 #### Hibernate5
 * [Hibernate5에서 1:다 조회시 부모중복조회이슈 Distinct 최적화](src/main/resources/Hibernate5_Distinct최적화.md)
  

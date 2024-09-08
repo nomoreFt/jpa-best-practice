@@ -12,6 +12,7 @@ spring:
     properties:
       org.hibernate.envers.audit_strategy: org.hibernate.envers.strategy.ValidityAuditStrategy #Envers ?? ???
       hibernate:
+        query.in_clause_parameter_padding: true
         session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 5000
         format_sql: true
         highlight_sql: true
