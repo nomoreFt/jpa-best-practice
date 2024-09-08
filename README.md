@@ -50,6 +50,12 @@
 * v3 : @Formula를 사용하여 비영속 필드에 DB에서 계산된 값을 가져오는 방법
 * [Transient](src/main/java/jpa/practice/relationship/useful_transient)
 
+## Transient 객체로 필드 능동적으로 exist 조회
+* 기본 JpaRepository는 CrudRepository를 상속받아 구현되어 있어서 existById가 존재한다.
+* 비영속 객체를 받아 해당 DB에 값이 동일한 엔티티가 존재하는지 체크하고 싶을 때 사용한다.
+* extends QueryByExampleExecutor<Book>를 상속받아 기본 구현을 사용한다.
+* ex) 도서 관리 시스템에서 책을 등록할 때 같은 제목과 저자를 가진 책이 이미 데이터베이스에 존재하는지 확인하고, 중복을 방지
+* [Transient Field Check Exist](src/main/java/jpa/practice/relationship/check_exist_by_transient_entity)
 
 ## JPQL 기본 지원 function
 * JPQL에서 지원하는 기본 함수들을 사용하는 방법
