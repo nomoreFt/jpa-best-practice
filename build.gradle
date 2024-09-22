@@ -36,6 +36,10 @@ dependencies {
     //envers
     implementation 'org.springframework.data:spring-data-envers'
 
+    //hibernate types
+    implementation 'com.vladmihalcea:hibernate-types-63:3.8.2'
+
+
 }
 
 tasks.named('test') {

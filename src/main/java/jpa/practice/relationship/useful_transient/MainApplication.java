@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class MainApplication {
+
     private final OrderService orderService;
 
     public MainApplication(OrderService orderService) {
