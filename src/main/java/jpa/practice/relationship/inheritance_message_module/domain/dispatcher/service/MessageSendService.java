@@ -27,10 +27,6 @@ public class MessageSendService {
 
     public MessageSendService(List<MessageSendStrategy> messageSendStrategies) {
         this.messageSendStrategies = messageSendStrategies;
-    }
-
-    @PostConstruct
-    public void init() {
         messageSendStrategies.forEach(sender -> messageSenderMap.put(sender.ofType(), sender));
     }
 

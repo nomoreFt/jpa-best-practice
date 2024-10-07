@@ -17,13 +17,7 @@ public class MobilePlanService {
 
     public MobilePlanService(List<MobilePlanDecorator> mobilePlanDecorators) {
         this.mobilePlanDecorators = mobilePlanDecorators;
-
-    }
-
-    @PostConstruct
-    public void init() {
         mobilePlanDecorators.forEach(decorator -> {
-            // 각 데코레이터를 식별할 수 있는 키로 Map에 저장 (데코레이터 클래스 이름을 키로 사용)
             decoratorMap.put(decorator.getType(), decorator);
         });
     }
