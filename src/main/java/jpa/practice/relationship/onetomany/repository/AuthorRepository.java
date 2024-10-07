@@ -61,4 +61,5 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
             WHERE a.id = :id
             """)
     List<Tuple> fetchWithBooksTupleByIdV3(Long id);
+
 }
